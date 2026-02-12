@@ -10025,3 +10025,8 @@ a.text-dark:hover, a.text-dark:focus {
     color: #ccc;
     content: "/ ";
 }
+
+.footer-main{
+    background-color: #343a40;
+    color: white;
+}
