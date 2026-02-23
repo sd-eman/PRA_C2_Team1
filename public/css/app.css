@@ -364,6 +364,15 @@ h1, .h1 {
     font-size: 2.25rem;
 }
 
+.container a h1, .h1{
+    font-size: 2.25rem;
+    text-decoration: none;
+    padding: 15px;
+    border: 2px solid rgba(0, 0, 0, 0.473);
+    BORDER-RADIUS: 8px;
+    background-color: #a7a2a264;
+}
+
 h2, .h2 {
     font-size: 1.8rem;
 }
