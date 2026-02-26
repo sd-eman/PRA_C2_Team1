@@ -155,7 +155,7 @@ sup {
 }
 
 a {
-    color: #3490dc;
+    color: #00f521;
     text-decoration: none;
     background-color: transparent;
 }
@@ -365,12 +365,13 @@ h1, .h1 {
 }
 
 .container a h1, .h1{
-    font-size: 2.25rem;
+    font-size: 3.5rem;
     text-decoration: none;
     padding: 15px;
     border: 2px solid rgba(0, 0, 0, 0.473);
     BORDER-RADIUS: 8px;
     background-color: #a7a2a264;
+    font-weight: bold;
 }
 
 h2, .h2 {
@@ -1085,7 +1086,9 @@ pre code {
     .col-md-4 {
         flex: 0 0 33.3333333333%;
         max-width: 33.3333333333%;
+        background-color: #a7a2a264;
     }
+
 
     .col-md-5 {
         flex: 0 0 41.6666666667%;
