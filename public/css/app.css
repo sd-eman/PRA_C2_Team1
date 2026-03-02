@@ -11006,15 +11006,16 @@ a.text-dark:focus {
 .footer-container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px; /*zelfde als je pagina container*/
+    max-width: 1200px;
     margin: 0 auto;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
 }
 
 .footer-section {
-    flex: 1;
-    min-width: 200px;
+    flex: 1 1 200px;
+    min-width: 300px;
 }
 
 .footer-section h4 {
@@ -11026,6 +11027,7 @@ a.text-dark:focus {
 .footer-section li {
     margin: 5px 0;
     color: #cccccc;
+    text-align: center;
 }
 
 .footer-section ul {
