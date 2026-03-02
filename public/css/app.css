@@ -642,6 +642,9 @@ pre code {
     justify-content: center;
     margin-right: -15px;
     margin-left: -15px;
+    margin-top: 10px;
+    justify-content: center;
+    width: 150rem;
 }
 
 .no-gutters {
@@ -1210,6 +1213,7 @@ pre code {
     .col-md-4 {
         flex: 0 0 33.3333333333%;
         max-width: 33.3333333333%;
+        background: #a7a2a264;
     }
 
 
