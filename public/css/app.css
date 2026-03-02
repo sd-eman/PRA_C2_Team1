@@ -10026,7 +10026,16 @@ a.text-dark:hover, a.text-dark:focus {
     content: "/ ";
 }
 
-.footer-main{
-    background-color: #343a40;
-    color: white;
+/* Footer styling */
+.footer-main {
+    background-color: #333333; /*zelfde als navbar*/
+    color: #ffffff;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-main .footer-content {
+    max-width: 1200px; /* of dezelfde breedte als container */
+    margin: 0 auto;
 }

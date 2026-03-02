@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
     <x-head/>
+    <style>
+        /* Flexbox voor sticky footer */
+        html, body {
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            flex: 1; /* neemt alle beschikbare ruimte */
+        }
+    </style>
 </head>
 <body>
 
 <x-navbar/>
 
-<div class="container">
+<div class="container main-content">
     <div class="row">
         <div class="col-md-8">
             <x-header/>
@@ -31,11 +44,7 @@
     </div>
 </div>
 
-<!-- Footer in een aparte container/row -->
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <x-footer/>
-        </div>
-    </div>
-</div>
+<x-footer/>
+
+</body>
+</html>
