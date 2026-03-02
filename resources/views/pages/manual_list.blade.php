@@ -20,7 +20,12 @@
                 <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/{{ $manual->id }}/" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
                 ({{$manual->filesize_human_readable}})
             @else
-                <a href="{{ $manual->url }}" target="new" alt="{{ $manual->name }}" title="{{ $manual->name }}">{{ $manual->name }}</a>
+                <a href="{{ route('manual.show', ['brand_id' => $brand->id, 'brand_slug' => $brand->getNameUrlEncodedAttribute(), 'manual_id' => $manual->id]) }}"
+                    target="_blank"
+                    alt="{{ $manual->name }}"
+                    title="{{ $manual->name }}">
+                    {{ $manual->name }}
+                </a>
             @endif
 
             <br />
