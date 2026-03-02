@@ -41,6 +41,11 @@ Route::get('/', function () {
     return view('pages.homepage', compact('brands','Team'));
 })->name('home');
 
+Route::get('/contact', function () {
+    return view('pages.contactformulier');
+})->name('contact');
+
+
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
 

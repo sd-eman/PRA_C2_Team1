@@ -75,6 +75,58 @@ body {
     background-color: #f8fafc;
 }
 
+.contactformulier{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 35px;
+}
+
+.contactformulier .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px;
+    height: 50vh;
+    align-items: start;
+    width: 500px;
+    background-color: #709bbd27;
+    padding: 20px;
+    border: #00000064 1px solid;
+    border-radius: 10px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form-group label{
+    margin-right: 20px;
+}
+
+.button-group{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+}
+.button input{
+    background-color: #ded9d996;
+    border-radius: 10px;
+    border-width: 2px;
+    padding: 10px;
+    text-align: center;
+}
+.button input:hover{
+    background-color: #99979796;
+    padding: 12px;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }

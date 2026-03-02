@@ -15,6 +15,8 @@ return [
 
     'home' => "Home",
 'home_alt' => "Download your manual homepage: Free user guides!",
+'contact' => "Contact",
+'contact_alt' => "Contact us for any questions or feedback about our manual download service",
 'homepage_title' => "Download your manual",
 'copyright' => "Copyright 2017 Avarix",
 'download_manual' => "Click here to download the manual",
