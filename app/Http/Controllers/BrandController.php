@@ -13,7 +13,9 @@ class BrandController extends Controller
     {
         $brands = Brand::orderBy('name')->get();
 
-        return view('brands.index', compact('brands'));
+        return view('brands.index', [
+            "brands" => $brands
+        ]);
     }
 
 
