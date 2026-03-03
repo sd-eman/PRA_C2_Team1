@@ -45,6 +45,10 @@ Route::get('/contact', function () {
     return view('pages.contactformulier');
 })->name('contact');
 
+// Alphabet index pages for SEO (e.g. /merken/B)
+Route::get('/merken/{letter}', [BrandController::class, 'byLetter'])
+    ->where('letter', '[A-Za-z]')
+    ->name('brands.by-letter');
 
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
@@ -60,6 +64,6 @@ Route::get('/{brand_id}/{brand_slug}/', [BrandController::class, 'show']);
 // Detail page for a manual
 Route::get('/{brand_id}/{brand_slug}/{manual_id}/', [ManualController::class, 'show'])
     ->name('manual.show');
-    
+
 // Generate sitemaps
 Route::get('/generateSitemap/', [SitemapController::class, 'generate']);

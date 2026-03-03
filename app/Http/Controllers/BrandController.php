@@ -26,7 +26,20 @@ class BrandController extends Controller
         return view('pages/manual_list', [
             "brand" => $brand,
             "manuals" => $manuals
+
         ]);
 
     }
+
+    public function byLetter($letter)
+    {
+        $letter = strtoupper($letter);
+        $brands = Brand::where('name', 'LIKE', $letter . '%')->orderBy('name')->get();
+        return view('pages.brandsbyletter', [
+            'brands' => $brands,
+            'letter' => $letter
+        ]);
+    }
+
+
 }
