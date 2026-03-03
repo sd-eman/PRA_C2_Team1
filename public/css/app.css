@@ -76,56 +76,136 @@ body {
     background-color: #f8fafc;
 }
 
-.contactformulier{
+/* ── ContactFormulier ── */
+.contactformulier {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 35px;
+    margin-top: 50px;
+    font-family: 'DM Sans', sans-serif;
 }
 
-.contactformulier .form{
+.contactformulier h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1a2e44;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.contactformulier .form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+    gap: 18px;
     margin: 20px;
-    height: 50vh;
-    align-items: start;
-    width: 500px;
-    background-color: #709bbd27;
-    padding: 20px;
-    border: #00000064 1px solid;
-    border-radius: 10px;
+    margin-bottom: 55px;
+    width: 635px;
+    background: #709bbd27;
+    padding: 36px 32px;
+    border: 1px solid #00000029;
+    border-radius: 16px;
+    box-shadow:
+        0 4px 6px -1px rgba(0,0,0,.06),
+        0 10px 30px -4px rgba(112, 155, 189, .18);
 }
 
-.form-group{
+.form-group {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-}
-
-.form-group label{
-    margin-right: 20px;
-}
-
-.button-group{
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
     align-items: center;
+    gap: 0;
+    width: 100%;
 }
-.button input{
-    background-color: #ded9d996;
-    border-radius: 10px;
-    border-width: 2px;
-    padding: 10px;
-    text-align: center;
+
+.form-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #4a607a;
+    width: 140px;
+    flex-shrink: 0;
+    margin-right: 16px;
 }
-.button input:hover{
-    background-color: #99979796;
-    padding: 12px;
+
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #1a2e44;
+    background: #f7f9fc;
+    border: 1.5px solid #dde4ed;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.form-input:focus {
+    border-color: #4a90c4;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(74, 144, 196, 0.15);
+}
+
+.form-input::placeholder {
+    color: #a8b8c8;
+}
+
+/* ── Form Buttons ── */
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    margin-top: 6px;
+}
+
+.button {
+    flex: 1;
+}
+
+.button input[type="submit"] {
+    width: 100%;
+    padding: 11px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.button:first-child input[type="submit"] {
+    background: #1a6fa8;
+    color: #ffffff;
+    border-color: #1a6fa8;
+}
+
+.button:first-child input[type="submit"]:hover {
+    background: #155d8e;
+    box-shadow: 0 4px 12px rgba(26, 111, 168, 0.35);
+    transform: translateY(-1px);
+}
+
+.button:last-child input[type="submit"] {
+    background: #ffffff;
+    color: #c0392b;
+    border-color: #e8c4c0;
+}
+
+.button:last-child input[type="submit"]:hover {
+    background: #fdf0ef;
+    border-color: #c0392b;
+    transform: translateY(-1px);
+}
+
+.button input[type="submit"]:active {
+    transform: translateY(0);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
