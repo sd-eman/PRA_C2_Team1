@@ -8,6 +8,15 @@ use App\Models\Manual;
 
 class BrandController extends Controller
 {
+
+    public function index()
+    {
+        $brands = Brand::orderBy('name')->get();
+
+        return view('brands.index', compact('brands'));
+    }
+
+
     public function show($brand_id, $brand_slug)
     {
 
