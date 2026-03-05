@@ -39,6 +39,10 @@
                     <li><a href="/contact" title="{{ __('misc.contact_alt') }}"
                             alt="{{ __('misc.contact_alt') }}">{{ __('misc.contact') }}</a></li>
                     {{ $breadcrumb ?? '' }}
+
+                    <li><a href="{{ route('brands.by-letter', 'A') }}" title="{{ __('misc.brandsbyletter_alt') }}"
+                            alt="{{ __('misc.brandsbyletter_alt') }}">{{ __('misc.brandsbyletter') }}</a></li>
+
                 </ul>
 
                 @if (isset($_GET['q']))

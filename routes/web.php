@@ -45,6 +45,10 @@ Route::get('/contact', function () {
     return view('pages.contactformulier');
 })->name('contact');
 
+Route::get('/brandsbyletter', function () {
+    return view('pages.brandsbyletter');
+})->name('brandsbyletter');
+
 // Alphabet index pages for SEO (e.g. /merken/B)
 Route::get('/merken/{letter}', [BrandController::class, 'byLetter'])
     ->where('letter', '[A-Za-z]')
