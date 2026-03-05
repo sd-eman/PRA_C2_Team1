@@ -20,7 +20,7 @@ return [
 'brandsbyletter' => "Merken op letter",
 'brandsbyletter_alt' => "Bekijk merken op alfabet om sneller uw handleiding te vinden",
 'homepage_title' => "Download your manual",
-'copyright' => "Copyright 2017 Avarix",
+'copyright' => "Copyright 2026 Avarix",
 'download_manual' => "Click here to download the manual",
 'download_manual_alt' => "Download your manual here",
 'view_manual' => "Directly view your manual",
