@@ -23,7 +23,7 @@
     <div class="alphabet-nav">
         Ga naar letter:
 
-        @foreach(range('A', 'Z') as $letter)
+        @foreach (range('A', 'Z') as $letter)
             <a href="#{{ $letter }}">{{ $letter }}</a>
         @endforeach
     </div>
@@ -37,19 +37,22 @@
                             <?php
                             $current_first_letter = strtoupper(substr($brand->name, 0, 1));
 
-
                             if (!isset($header_first_letter) || $current_first_letter != $header_first_letter) {
                                 echo '</ul>
-                                    <h2 id="' . $current_first_letter . '">' . $current_first_letter . '</h2>
-                                    <ul>';
+                                                                <h2 id="' .
+                                    $current_first_letter .
+                                    '">' .
+                                    $current_first_letter .
+                                    '</h2>
+                                                                <ul>';
                             }
                             $header_first_letter = $current_first_letter;
                             ?>
 
                             <li>
-                                <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/">
-                                    {{ $brand->name }}
-                                </a>
+                                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }} /" class="brand-badge">
+                                        {{ $brand->name }}
+                                    </a>
                             </li>
                         @endforeach
                     </ul>

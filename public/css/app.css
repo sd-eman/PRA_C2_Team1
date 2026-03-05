@@ -205,6 +205,25 @@ body {
     transform: translateY(0);
 }
 
+
+.brand-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #3490dc;
+    text-decoration: none;
+    transition: background 0.2s;
+    margin: 3px;
+
+}
+
+.brand-badge:hover {
+    background: #f0f0f0;
+    color: #1d68a7;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }
