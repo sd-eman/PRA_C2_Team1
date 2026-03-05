@@ -83,11 +83,9 @@ body {
     align-items: center;
     justify-content: flex-start;
     margin-top: 50px;
-    font-family: 'DM Sans', sans-serif;
 }
 
 .contactformulier h1 {
-    font-family: 'Fraunces', serif;
     font-size: 2rem;
     font-weight: 600;
     color: #1a2e44;
@@ -171,7 +169,6 @@ body {
 .button input[type="submit"] {
     width: 100%;
     padding: 11px 16px;
-    font-family: 'DM Sans', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
