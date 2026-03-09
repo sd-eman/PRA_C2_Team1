@@ -14,9 +14,16 @@
     </h1>
 
 
+@php
+    // Group brands by first letter
+    $brandsByLetter = $brands->groupBy(function($brand) {
+        return strtoupper(substr($brand->name, 0, 1));
+    });
+@endphp
+
     <?php
     $size = count($brands);
-    $columns = 3;
+    $columns = 20;
     $chunk_size = ceil($size / $columns);
     ?>
 
@@ -30,37 +37,24 @@
 
     <div class="container">
         <div class="row">
-            @foreach ($brands->chunk($chunk_size) as $chunk)
+            @foreach(range('A', 'Z') as $letter)
+            @if(isset($brandsByLetter[$letter]))
                 <div class="col-md-4">
-                    <ul>
-                        @foreach ($chunk as $brand)
-                            <?php
-                            $current_first_letter = strtoupper(substr($brand->name, 0, 1));
-
-                            if (!isset($header_first_letter) || $current_first_letter != $header_first_letter) {
-                                echo '</ul>
-                                                                <h2 id="' .
-                                    $current_first_letter .
-                                    '">' .
-                                    $current_first_letter .
-                                    '</h2>
-                                                                <ul>';
-                            }
-                            $header_first_letter = $current_first_letter;
-                            ?>
-
-                            <li>
-                                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }} /" class="brand-badge">
+                    <h2 id="{{ $letter }}">{{ $letter }}</h2>
+                    @foreach($brandsByLetter[$letter]->chunk(5) as $chunk)
+                        <ul>
+                            @foreach($chunk as $brand)
+                                <li>
+                                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/" class="brand-badge">
                                         {{ $brand->name }}
                                     </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endforeach
                 </div>
-                <?php
-
-                ?>
-            @endforeach
+            @endif
+        @endforeach
         </div>
     </div>
 
