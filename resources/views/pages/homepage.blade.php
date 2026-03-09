@@ -19,18 +19,9 @@
         </ul>
     @endif
 
-    <h1>
-        <x-slot:title>
-            {{ __('misc.all_brands') }}
-        </x-slot:title>
-    </h1>
-
-
-    <?php
-    $size = count($brands);
-    $columns = 20;
-    $chunk_size = ceil($size / $columns);
-    ?>
+    <x-slot:title>
+        {{ __('misc.all_brands') }}
+    </x-slot:title>
 
     <div class="alphabet-nav">
         Ga naar letter:
@@ -40,40 +31,19 @@
     </div>
 
     <div class="container">
-        <div class="row">
-            @foreach(range('A', 'Z') as $letter)
+        @foreach(range('A', 'Z') as $letter)
             @if(isset($brandsByLetter[$letter]))
-                <div class="col-md-4">
-                    <ul>
-                        @foreach ($chunk as $brand)
-                            <?php
-                            $current_first_letter = strtoupper(substr($brand->name, 0, 1));
-
-                            if (!isset($header_first_letter) || $current_first_letter != $header_first_letter) {
-                                echo '</ul>
-                                                                <h2 id="' .
-                                    $current_first_letter .
-                                    '">' .
-                                    $current_first_letter .
-                                    '</h2>
-                                                                <ul>';
-                            }
-                            $header_first_letter = $current_first_letter;
-                            ?>
-
-                            <li>
-                                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }} /" class="brand-badge">
-                                        {{ $brand->name }}
-                                    </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <?php
-
-                ?>
-            @endforeach
-        </div>
+                <h2 id="{{ $letter }}">{{ $letter }}</h2>
+                <ul>
+                    @foreach($brandsByLetter[$letter] as $brand)
+                        <li>
+                            <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/" class="brand-badge">
+                                {{ $brand->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+        @endforeach
     </div>
-
 </x-layouts.app>
