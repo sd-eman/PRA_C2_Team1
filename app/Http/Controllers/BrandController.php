@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
-use App\Models\Manual;
 
 class BrandController extends Controller
 {
-
     public function index()
     {
         $brands = Brand::orderBy('name')->get();
@@ -18,19 +16,24 @@ class BrandController extends Controller
         ]);
     }
 
-
     public function show($brand_id, $brand_slug)
     {
-
         $brand = Brand::findOrFail($brand_id);
-        $manuals = Manual::all()->where('brand_id', $brand_id);
 
-        return view('pages/manual_list', [
+        // Alle handleidingen van dit merk
+        $manuals = $brand->manuals()->get();
+
+        // Top 5 populairste handleidingen van dit merk
+        $topManuals = $brand->manuals()
+                            ->orderByDesc('views')
+                            ->take(5)
+                            ->get();
+
+        return view('pages.manual_list', [
             "brand" => $brand,
-            "manuals" => $manuals
-
+            "manuals" => $manuals,
+            "topManuals" => $topManuals
         ]);
-
     }
 
     public function byLetter($letter)
@@ -42,6 +45,4 @@ class BrandController extends Controller
             'letter' => $letter
         ]);
     }
-
-
 }

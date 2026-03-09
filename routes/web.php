@@ -33,12 +33,20 @@ use App\Http\Controllers\ManualController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\LocaleController;
+use App\Models\Manual;
 
 // Homepage
 Route::get('/', function () {
     $Team = 'Team-A';
     $brands = Brand::all()->sortBy('name');
-    return view('pages.homepage', compact('brands','Team'));
+
+    // Top 10 populairste handleidingen
+    $topManuals = Manual::with('brand')
+                        ->orderByDesc('views')
+                        ->take(10)
+                        ->get();
+
+    return view('pages.homepage', compact('brands','Team', 'topManuals'));
 })->name('home');
 
 Route::get('/contact', function () {

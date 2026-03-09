@@ -1,11 +1,23 @@
 <x-layouts.app>
     <h3>{{ $Team }}</h3>
+
     <x-slot:introduction_text>
-        <p><img src="img/afbl_logo.png" align="right" width="100"
-                height="100">{{ __('introduction_texts.homepage_line_1') }}</p>
+        <p><img src="img/afbl_logo.png" align="right" width="100" height="100">
+            {{ __('introduction_texts.homepage_line_1') }}
+        </p>
         <p>{{ __('introduction_texts.homepage_line_2') }}</p>
         <p>{{ __('introduction_texts.homepage_line_3') }}</p>
     </x-slot:introduction_text>
+
+    {{-- Top 10 populairste handleidingen --}}
+    @if($topManuals->count())
+        <h3>Top 10 populairste handleidingen</h3>
+        <ul>
+            @foreach($topManuals as $manual)
+                <li>{{ $manual->brand->name }}: {{ $manual->type }}</li>
+            @endforeach
+        </ul>
+    @endif
 
     <h1>
         <x-slot:title>
@@ -13,13 +25,6 @@
         </x-slot:title>
     </h1>
 
-
-@php
-    // Group brands by first letter
-    $brandsByLetter = $brands->groupBy(function($brand) {
-        return strtoupper(substr($brand->name, 0, 1));
-    });
-@endphp
 
     <?php
     $size = count($brands);
@@ -29,7 +34,6 @@
 
     <div class="alphabet-nav">
         Ga naar letter:
-
         @foreach (range('A', 'Z') as $letter)
             <a href="#{{ $letter }}">{{ $letter }}</a>
         @endforeach
@@ -40,24 +44,36 @@
             @foreach(range('A', 'Z') as $letter)
             @if(isset($brandsByLetter[$letter]))
                 <div class="col-md-4">
-                    <h2 id="{{ $letter }}">{{ $letter }}</h2>
-                    @foreach($brandsByLetter[$letter]->chunk(5) as $chunk)
-                        <ul>
-                            @foreach($chunk as $brand)
-                                <li>
-                                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/" class="brand-badge">
+                    <ul>
+                        @foreach ($chunk as $brand)
+                            <?php
+                            $current_first_letter = strtoupper(substr($brand->name, 0, 1));
+
+                            if (!isset($header_first_letter) || $current_first_letter != $header_first_letter) {
+                                echo '</ul>
+                                                                <h2 id="' .
+                                    $current_first_letter .
+                                    '">' .
+                                    $current_first_letter .
+                                    '</h2>
+                                                                <ul>';
+                            }
+                            $header_first_letter = $current_first_letter;
+                            ?>
+
+                            <li>
+                                    <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }} /" class="brand-badge">
                                         {{ $brand->name }}
                                     </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    @endforeach
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-            @endif
-        @endforeach
+                <?php
+
+                ?>
+            @endforeach
         </div>
     </div>
-
-
 
 </x-layouts.app>
