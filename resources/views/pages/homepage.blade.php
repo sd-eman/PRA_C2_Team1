@@ -1,7 +1,6 @@
 <x-layouts.app>
     <h3>{{ $Team }}</h3>
 
-    {{-- Introductietekst --}}
     <x-slot:introduction_text>
         <p><img src="img/afbl_logo.png" align="right" width="100" height="100">
             {{ __('introduction_texts.homepage_line_1') }}
@@ -20,17 +19,25 @@
         </ul>
     @endif
 
-    {{-- Titel van alle merken --}}
-    <x-slot:title>
-        {{ __('misc.all_brands') }}
-    </x-slot:title>
-
     @php
-        // Groepeer merken per eerste letter
         $brandsByLetter = $brands->groupBy(function($brand) {
             return strtoupper(substr($brand->name, 0, 1));
         });
     @endphp
+
+
+
+
+    <x-slot:title>
+        {{ __('misc.all_brands') }}
+    </x-slot:title>
+
+      <?php
+        $size = count($brands);
+        $columns = 20;
+        ?>
+
+
 
     <div class="alphabet-nav">
         Ga naar letter:
@@ -40,7 +47,8 @@
     </div>
 
     <div class="container">
-        <div class="row">
+
+       <div class="row">
             @foreach(range('A', 'Z') as $letter)
                 @if(isset($brandsByLetter[$letter]))
                     <div class="col-md-4">
@@ -61,5 +69,4 @@
             @endforeach
         </div>
     </div>
-
 </x-layouts.app>
