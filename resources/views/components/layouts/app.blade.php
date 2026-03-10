@@ -43,12 +43,6 @@
                 @else
                     {{ $slot }}
                 @endif
-
-                <ul class="breadcrumb">
-                    <li><a href="/" title="{{ __('misc.home_alt') }}">{{ __('misc.home') }}</a></li>
-                    <li><a href="/contact" title="{{ __('misc.contact_alt') }}">{{ __('misc.contact') }}</a></li>
-                    {{ $breadcrumb ?? '' }}
-                </ul>
             </div>
         </div>
     </div>

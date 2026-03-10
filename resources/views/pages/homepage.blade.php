@@ -14,7 +14,7 @@
         <h3>Top 10 populairste handleidingen</h3>
         <ul>
             @foreach ($topManuals as $manual)
-                <li>{{ $manual->brand->name }}: {{ $manual->type }}</li>
+                <li>{{ $manual->brand->name }}: {{ $manual->name }}</li>
             @endforeach
         </ul>
     @endif
@@ -35,13 +35,6 @@
     $size = count($brands);
     $columns = 20;
     ?>
-
-    <div class="alphabet-nav">
-        Ga naar letter:
-        @foreach (range('A', 'Z') as $letter)
-            <a href="#{{ $letter }}">{{ $letter }}</a>
-        @endforeach
-    </div>
 
     {{-- Categorieën --}}
     <h3>Categorieën</h3>
