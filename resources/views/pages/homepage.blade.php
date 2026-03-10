@@ -15,18 +15,19 @@
         <h3>Top 10 populairste handleidingen</h3>
         <ul>
             @foreach($topManuals as $manual)
-                <li>{{ $manual->brand->name }}: {{ $manual->type }}</li>
+                <li>
+                    {{ $manual->brand->name }}: {{ $manual->name }}
+                </li>
             @endforeach
         </ul>
     @endif
 
-    {{-- Titel van alle merken --}}
+    {{-- Titel --}}
     <x-slot:title>
         {{ __('misc.all_brands') }}
     </x-slot:title>
 
     @php
-        // Groepeer merken per eerste letter
         $brandsByLetter = $brands->groupBy(function($brand) {
             return strtoupper(substr($brand->name, 0, 1));
         });
@@ -45,6 +46,7 @@
                 @if(isset($brandsByLetter[$letter]))
                     <div class="col-md-4">
                         <h2 id="{{ $letter }}">{{ $letter }}</h2>
+
                         @foreach($brandsByLetter[$letter]->chunk(5) as $chunk)
                             <ul>
                                 @foreach($chunk as $brand)
@@ -56,6 +58,7 @@
                                 @endforeach
                             </ul>
                         @endforeach
+
                     </div>
                 @endif
             @endforeach
