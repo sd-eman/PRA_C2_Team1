@@ -18,6 +18,8 @@ return [
 'homepage_title' => "Download je handleiding",
 'brandsbyletter' => "Merken op letter",
 'brandsbyletter_alt' => "Bekijk merken op alfabet om sneller uw handleiding te vinden",
+'categories' => "Categorieën",
+'categories_alt' => "Bekijk handleidingen per productcategorie, zoals wasmachines of televisies",
 'copyright' => "Copyright 2026 Avarix",
 'download_manual' => "Klik hier om je handleiding te downloaden",
 'download_manual_alt' => "Klik hier om je handleiding te downloaden",

@@ -10,6 +10,12 @@ class Manual extends Model
     use HasFactory;
 
     // Relatie met Brand
+
+    protected $fillable = [
+        'brand_id',
+        'name',
+    ];
+
     public function brand()
     {
         return $this->belongsTo(Brand::class);

@@ -19,6 +19,8 @@ return [
 'contact_alt' => "Contact us for any questions or feedback about our manual download service",
 'brandsbyletter' => "Merken op letter",
 'brandsbyletter_alt' => "Bekijk merken op alfabet om sneller uw handleiding te vinden",
+'categories' => "Categorieën",
+'categories_alt' => "Bekijk handleidingen per productcategorie, zoals wasmachines of televisies",
 'homepage_title' => "Download your manual",
 'copyright' => "Copyright 2026 Avarix",
 'download_manual' => "Click here to download the manual",

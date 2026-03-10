@@ -11,18 +11,17 @@ class Brand extends Model
 
     public function getNameUrlEncodedAttribute()
     {
-        $name_url_encoded = str_replace('/','',$this->name);
+        $name_url_encoded = str_replace('/', '', $this->name);
 
         return $name_url_encoded;
-    }
-
-    public function manuals()
-    {
-        return $this->hasMany(Manual::class);
     }
 
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+    public function manuals()
+    {
+        return $this->hasMany(Manual::class);
     }
 }

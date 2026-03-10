@@ -11,10 +11,10 @@
     </x-slot:introduction_text>
 
     {{-- Top 10 populairste handleidingen --}}
-    @if($topManuals->count())
+    @if ($topManuals->count())
         <h3>Top 10 populairste handleidingen</h3>
         <ul>
-            @foreach($topManuals as $manual)
+            @foreach ($topManuals as $manual)
                 <li>{{ $manual->brand->name }}: {{ $manual->type }}</li>
             @endforeach
         </ul>
@@ -27,7 +27,7 @@
 
     @php
         // Groepeer merken per eerste letter
-        $brandsByLetter = $brands->groupBy(function($brand) {
+        $brandsByLetter = $brands->groupBy(function ($brand) {
             return strtoupper(substr($brand->name, 0, 1));
         });
     @endphp
@@ -39,25 +39,17 @@
         @endforeach
     </div>
 
+    {{-- Categorieën --}}
+    <h3>Categorieën</h3>
     <div class="container">
         <div class="row">
-            @foreach(range('A', 'Z') as $letter)
-                @if(isset($brandsByLetter[$letter]))
-                    <div class="col-md-4">
-                        <h2 id="{{ $letter }}">{{ $letter }}</h2>
-                        @foreach($brandsByLetter[$letter]->chunk(5) as $chunk)
-                            <ul>
-                                @foreach($chunk as $brand)
-                                    <li>
-                                        <a href="/{{ $brand->id }}/{{ $brand->getNameUrlEncodedAttribute() }}/" class="brand-badge">
-                                            {{ $brand->name }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endforeach
-                    </div>
-                @endif
+            @foreach ($categories as $category)
+                <div class="col-md-4">
+                    <a href="/categories/{{ $category->id }}">
+                        <h4>{{ $category->name }}</h4>
+                    </a>
+                    <p>{{ $category->brands_count }} merken</p>
+                </div>
             @endforeach
         </div>
     </div>

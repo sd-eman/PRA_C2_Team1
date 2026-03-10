@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +40,7 @@ use App\Models\Manual;
 Route::get('/', function () {
     $Team = 'Team-A';
     $brands = Brand::all()->sortBy('name');
+    $categories = \App\Models\Category::withCount('brands')->get();
 
     // Top 10 populairste handleidingen
     $topManuals = Manual::with('brand')
@@ -46,7 +48,7 @@ Route::get('/', function () {
                         ->take(10)
                         ->get();
 
-    return view('pages.homepage', compact('brands','Team', 'topManuals'));
+    return view('pages.homepage', compact('brands','Team', 'topManuals', 'categories'));
 })->name('home');
 
 Route::get('/contact', function () {
@@ -61,6 +63,10 @@ Route::get('/brandsbyletter', function () {
 Route::get('/merken/{letter}', [BrandController::class, 'byLetter'])
     ->where('letter', '[A-Za-z]')
     ->name('brands.by-letter');
+
+// Alphabet index page for categories (e.g. /categorieen/B)
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 Route::get('/manual/{language}/{brand_slug}/', [RedirectController::class, 'brand']);
 Route::get('/manual/{language}/{brand_slug}/brand.html', [RedirectController::class, 'brand']);
