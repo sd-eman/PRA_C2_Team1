@@ -16,7 +16,6 @@ class ManualController extends Controller
         // +1 view tellen
         $manual->increment('views');
 
-        $manual->save();
 
         // Als het manual lokaal beschikbaar is, toon het in een iframe
         if ($manual->locally_available) {
